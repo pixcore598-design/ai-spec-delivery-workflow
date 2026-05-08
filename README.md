@@ -1,38 +1,89 @@
 # AI Spec Delivery Workflow
 
-Spec-driven delivery workflow for AI coding agents, built around `OpenSpec + Superpowers + gstack`.
+Turn AI coding from prompt roulette into a repeatable delivery system.
 
-面向 AI 编码代理的规范驱动交付工作流，核心思路是：
+把 AI 编码从“想到就写”变成“先对齐、再实现、最后拿证据交付”的标准流程。
 
-- `OpenSpec` 管需求与规范
-- `Superpowers` 管执行与拆解
-- `gstack` 管验证与交付
+Built around `OpenSpec + Superpowers + gstack`, this repo gives you a reusable workflow for AI agents such as Claude Code, Trae, Cursor, and similar tools.
 
-目标不是“一次性生成代码”，而是把 AI 开发过程变成：
+## Why People Star This
 
-- 可对齐
-- 可拆解
-- 可验证
-- 可复用
+Most AI coding setups break down in the same place:
 
-## Why This Repo
+- they start coding before requirements are aligned
+- they make large hidden jumps during execution
+- they call work "done" without proof
 
-Most AI coding workflows fail in production for three recurring reasons:
+This repo fixes that with a practical default:
 
-1. Requirements are not aligned before implementation.
-2. Execution becomes a black box.
-3. Completion is declared without evidence.
+- align intent before coding
+- break work into small executable steps
+- verify with tests, screenshots, QA, or runtime evidence
+- hand off with risks and next actions clearly stated
 
-这个仓库提供了一套简单但够硬的默认工作流，帮助你把 AI 从“能写点代码”提升到“能交付一个有证据支撑的结果”。
+In short:
 
-## What’s Included
+> no alignment, no large task
+>
+> no evidence, not done
+
+## What You Get
+
+- A reusable Trae skill for spec-driven delivery
+- A reusable Claude rule document
+- A drop-in `CLAUDE.md` template for global or project usage
+- A simple installer for fast adoption
+- A launch kit so you can share the workflow with your team or audience
+
+## 60-Second Install
+
+### Option 1: Run Directly From GitHub
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/pixcore598-design/ai-spec-delivery-workflow/main/install.sh | bash
+```
+
+### Option 2: Clone And Install
+
+```bash
+git clone https://github.com/pixcore598-design/ai-spec-delivery-workflow.git
+cd ai-spec-delivery-workflow
+chmod +x install.sh
+./install.sh
+```
+
+The installer will:
+
+- install the skill into `~/.trae/skills/spec-delivery-workflow`
+- copy the rule into `~/.claude/rules/spec-delivery-workflow.md`
+- write `templates/CLAUDE.md` into `~/.claude/CLAUDE.md` only if that file does not already exist
+
+## The Problem It Solves
+
+Without a workflow, AI delivery often looks like this:
+
+- vague request
+- immediate code generation
+- unclear assumptions
+- weak validation
+- regressions discovered late
+
+With this workflow, the path becomes:
+
+`alignment -> clarification -> decomposition -> implementation -> verification -> handoff`
+
+That means fewer blind spots, fewer rewrites, and much better trust in AI output.
+
+## What's Inside
 
 - `skills/spec-delivery-workflow/SKILL.md`
-  A reusable skill for spec-driven delivery.
+  Reusable skill text for spec-driven execution.
 - `rules/spec-delivery-workflow.md`
-  A reusable rule document that explains the workflow.
+  Reusable rule document for persistent behavior.
 - `templates/CLAUDE.md`
-  A drop-in global or project-level Claude workflow template.
+  Default workflow template for global or project setup.
+- `docs/launch-kit.md`
+  Ready-to-post launch copy for GitHub, X, communities, and private sharing.
 
 ## Core Workflow
 
@@ -40,23 +91,25 @@ Most AI coding workflows fail in production for three recurring reasons:
 
 Before implementation, define:
 
-- `proposal`: why this change exists
+- `proposal`: why this change matters
 - `design`: how it should work
-- `tasks`: executable delivery steps
+- `tasks`: what gets executed
+
+Even if you do not maintain a formal `openspec/` directory, the structure still applies.
 
 ### 2. Clarify Before Modifying
 
-When scope, risk, or acceptance is unclear:
+When scope, acceptance, or risk is unclear:
 
-- ask questions
-- expose assumptions
-- stop vague implementation jumps
+- ask targeted questions
+- surface assumptions
+- stop large unverified implementation jumps
 
 ### 3. Execute In Small Steps
 
 - break large work into small increments
-- keep changes scoped
-- use subagents/search for parallelizable read-only work
+- keep changes scoped and reversible
+- use search or subagents for parallelizable read-only work
 
 ### 4. Verify With Evidence
 
@@ -72,36 +125,23 @@ Rule:
 
 - no evidence, not done
 
-## Who This Is For
+### 5. Handoff Clearly
 
-This repo is useful if you:
+Every finished task should answer:
 
-- build with Claude Code, Trae, Cursor, or similar AI coding agents
-- want a production-grade workflow rather than prompt roulette
-- need a repeatable default for feature work, refactors, and cross-module changes
+- what changed
+- what was verified
+- what risks remain
+- what should happen next
 
-## Install
+## Best For
 
-### Option 1: Copy Manually
+This repo is especially useful if you:
 
-Copy the files into your local environment:
-
-- Skill -> `~/.trae/skills/spec-delivery-workflow/`
-- Rule -> `~/.claude/rules/`
-- Template -> `~/.claude/CLAUDE.md` or project `CLAUDE.md`
-
-### Option 2: Use The Installer
-
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-This will:
-
-- install the skill into `~/.trae/skills/spec-delivery-workflow`
-- copy the rule into `~/.claude/rules`
-- write `templates/CLAUDE.md` to `~/.claude/CLAUDE.md` if no file exists there yet
+- use Claude Code, Trae, Cursor, or similar AI coding agents
+- want production-grade delivery instead of one-shot prompting
+- need a repeatable standard for feature work, refactors, or cross-module changes
+- work with teams that need visible reasoning and evidence-based completion
 
 ## Recommended Prompts
 
@@ -111,13 +151,14 @@ Use prompts like:
 - `先规范拆解，再实现并验证`
 - `用 OpenSpec + Superpowers + gstack 处理这个功能`
 - `Treat this as a production-grade delivery task`
+- `Do not jump into coding. Align scope and acceptance first.`
 
 ## Suggested Adoption Path
 
 1. Install the skill
 2. Add the template into your global or project `CLAUDE.md`
 3. Use the workflow on one real medium-sized task
-4. Keep the lightweight mode for tiny fixes
+4. Keep lightweight mode for tiny fixes
 5. Require evidence before calling work complete
 
 ## Repo Structure
@@ -132,18 +173,32 @@ Use prompts like:
 ├── templates/
 │   └── CLAUDE.md
 ├── docs/
+│   └── launch-kit.md
 ├── install.sh
 ├── LICENSE
 └── README.md
 ```
 
+## Launch Kit
+
+If you want to publish or share this repo, use the ready-made copy here:
+
+- [docs/launch-kit.md](./docs/launch-kit.md)
+
+It includes:
+
+- GitHub launch copy
+- X or Twitter short posts
+- Chinese community sharing copy
+- internal team adoption copy
+
 ## Philosophy
 
-This workflow follows one simple principle:
+This project is built on one simple belief:
 
-> AI should not jump from vague intent to “done”.
+> AI should not jump from vague intent to "done".
 
-Instead, AI should move through:
+AI should move through a visible delivery path:
 
 `alignment -> decomposition -> implementation -> verification -> handoff`
 
@@ -155,4 +210,4 @@ MIT
 
 - Star the repo
 - Open an issue with your workflow improvements
-- Share examples of how you adapted it to your own agent stack
+- Share how you adapted it to your own agent stack
