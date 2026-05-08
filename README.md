@@ -1,5 +1,10 @@
 # AI Spec Delivery Workflow
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/pixcore598-design/ai-spec-delivery-workflow?style=social)](https://github.com/pixcore598-design/ai-spec-delivery-workflow/stargazers)
+[![Spec Driven](https://img.shields.io/badge/Workflow-Spec--Driven-6f42c1)](https://github.com/pixcore598-design/ai-spec-delivery-workflow)
+[![Trae Skill](https://img.shields.io/badge/Trae-Skill-0ea5e9)](./skills/spec-delivery-workflow/SKILL.md)
+
 Turn AI coding from prompt roulette into a repeatable delivery system.
 
 把 AI 编码从“想到就写”变成“先对齐、再实现、最后拿证据交付”的标准流程。
